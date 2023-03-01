@@ -13,19 +13,19 @@ pipeline {
             }
         }
     }
-    }
-    stage('Build Maven project') {
+     }
+     stage('Build Maven project') {
             steps {
                 sh 'mvn clean package'
             }
         }
     
-    stage('Build Docker image') {
+     stage('Build Docker image') {
             steps {
                 sh 'docker build -t srirepo:marine .'
             }
         }
-    stage('Push Docker image to registry') {
+     stage('Push Docker image to registry') {
             steps {
 
                     sh "aws ecr get-login-password --region ap-south-2 | docker login --username AWS    --password-stdin 670166063118.dkr.ecr.ap-south-2.amazonaws.com"
