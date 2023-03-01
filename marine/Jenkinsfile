@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+    environment {
+        DOCKER_REGISTRY = "670166063118.dkr.ecr.ap-south-2.amazonaws.com/srirepo"
+        EKS_CLUSTER_NAME = "sri-eks"
+        AWS_REGION = "ap-south-2"
+    }
+    stages {
+        stage('Fetch source code') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://gitlab.com/thotasrihari506/marine.git']]])
+                
+            }
+        }
+    }
+    }
+    stage('Build Maven project') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+

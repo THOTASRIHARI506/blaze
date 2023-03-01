@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.8</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.marine</groupId>
+	<artifactId>marine</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>marine</name>
+	<description>Marine project for Spring Boot</description>
+	<properties>
+		<blaze.version>7.5</blaze.version>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+		<java.version>11</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>license</groupId>
+			<artifactId>license</artifactId>
+			<version>3</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.10.1</version>
+        </dependency>
+
+		<dependency>
+			<groupId>il-common-support-92</groupId>
+			<artifactId>il-common-support-92</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>il-common-config</groupId>
+			<artifactId>il-common-config</artifactId>
+			<version>3</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+            <scope>provided</scope>
+        </dependency>
+
+		<dependency>
+			<groupId>AdvisorSvr</groupId>
+			<artifactId>AdvisorSvr</artifactId>
+			<version>3</version>
+		</dependency>
+		<dependency>
+			<groupId>AdvRmaServer</groupId>
+			<artifactId>AdvRmaServer</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>axis</groupId>
+			<artifactId>axis</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>bouncycastle-extracted</groupId>
+			<artifactId>bouncycastle-extracted</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ibm.ws.prereq.soap</groupId>
+			<artifactId>com.ibm.ws.prereq.soap</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.activation-api</groupId>
+			<artifactId>javax.activation-api</artifactId>
+			<version>3</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>javax.annotation-api</groupId>
+			<artifactId>javax.annotation-api</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.persistence-api</groupId>
+			<artifactId>javax.persistence-api</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.xml.soap-api</groupId>
+			<artifactId>javax.xml.soap-api</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jaxb-api</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jaxb-core</groupId>
+			<artifactId>jaxb-core</artifactId>
+			<version>3</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>jaxb-impl</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>3</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>jaxb-impl</groupId>
+			<artifactId>jaxb-xjc</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jaxen-1.1.4</groupId>
+			<artifactId>jaxen-1.1.4</artifactId>
+			<version>3</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>jaxws-api</groupId>
+			<artifactId>jaxws-api</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jaxws-rt</groupId>
+			<artifactId>jaxws-rt</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jaxb-impl</groupId>
+			<artifactId>jaxb-jxc</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jaxws-tools</groupId>
+			<artifactId>jaxws-tools</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>json</groupId>
+			<artifactId>json</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jsr181-api</groupId>
+			<artifactId>jsr181-api</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>management-api</groupId>
+			<artifactId>management-api</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mimepull</groupId>
+			<artifactId>mimepull</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>motorProviders</groupId>
+			<artifactId>motorProviders</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>poi-3.6-20091214</groupId>
+			<artifactId>poi-3.6-20091214</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>poi-ooxml-3.6-20091214</groupId>
+			<artifactId>poi-ooxml-3.6-20091214</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>poi-ooxml-schemas-3.6-20091214</groupId>
+			<artifactId>poi-ooxml-schemas-3.6-20091214</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>policy</groupId>
+			<artifactId>policy</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>resolver</groupId>
+			<artifactId>resolver</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>saaj-impl</groupId>
+			<artifactId>saaj-impl</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>stax2-api</groupId>
+			<artifactId>stax2-api</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>stax-ex</groupId>
+			<artifactId>stax-ex</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>streambuffer</groupId>
+			<artifactId>streambuffer</artifactId>
+			<version>3</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>woodstox-core-asl</groupId>
+			<artifactId>woodstox-core-asl</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>xmlbeans-2.3.0</groupId>
+			<artifactId>xmlbeans-2.3.0</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>FastInfoset</groupId>
+			<artifactId>FastInfoset</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>gmbal-api-only</groupId>
+			<artifactId>gmbal-api-only</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ha-api</groupId>
+			<artifactId>ha-api</artifactId>
+			<version>3</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>hibernate3</groupId>
+			<artifactId>hibernate3</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>AdvCommon</groupId>
+			<artifactId>AdvCommon</artifactId>
+			<version>3</version>
+
+		</dependency>
+		<dependency>
+			<groupId>Advisor</groupId>
+			<artifactId>Advisor</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>InnovatorRT</groupId>
+			<artifactId>InnovatorRT</artifactId>
+			<version>3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
+		</dependency>
+
+
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.sun.xml.messaging.saaj</groupId>
+			<artifactId>saaj-impl</artifactId>
+			<version>1.5.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.xml.ws</groupId>
+			<artifactId>jaxws-api</artifactId>
+			<version>2.2.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jakarta.activation</groupId>
+			<artifactId>jakarta.activation-api</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>ojdbc8</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<version>3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.jws</groupId>
+			<artifactId>javax.jws-api</artifactId>
+			<version>1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-core</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.0-b170201.1204</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>2.3.0-b170127.1453</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.blazebit</groupId>
+			<artifactId>blaze-job-documentation</artifactId>
+			<version>1.0.0-Alpha1</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<id>id1</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+						<configuration>
+							<schemaDirectory>${project.basedir}/src/main/xsd</schemaDirectory>
+							<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+							<schemaFiles>MarineRequest.xsd</schemaFiles>
+							<packageName>com.icicilombard.marine.model</packageName>
+							<bindingFiles>Bindings.xjb</bindingFiles>
+							<clearOutputDir>false</clearOutputDir>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			
+		
+
+			<plugin>
+				<!-- Build an executable JAR -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>com.icicilombard.marine.MarineApplication</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+		        <groupId>org.codehaus.mojo</groupId>
+		        <artifactId>exec-maven-plugin</artifactId>
+		        <version>1.6.0</version>
+		        <configuration>
+		     	<mainClass>com.journaldev.maven.utils.BuildInfo</mainClass>
+		        </configuration>
+            </plugin>
+
+			<plugin>
+				<groupId>com.coderplus.maven.plugins</groupId>
+				<artifactId>copy-rename-maven-plugin</artifactId>
+				<version>1.0</version>
+				<executions>
+					<execution>
+						<id>copy-file</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<sourceFile>${basedir}/src/main/xsd/MarineRequest.xsd</sourceFile>
+							<destinationFile>target/xsd/MarineRequest.xsd</destinationFile>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>libs</id>
+			<url>file://${basedir}/libs</url>
+		</repository>
+	</repositories>
+
+</project>

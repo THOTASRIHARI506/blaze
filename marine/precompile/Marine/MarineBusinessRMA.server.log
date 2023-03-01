@@ -1,0 +1,18 @@
+Started generating ADB for  on Wed 09/20/2017_16:54:12.10 
+time : 720
+Sep 20, 2017 4:54:59 PM net.sf.ehcache.config.ConfigurationFactory parseConfiguration
+WARNING: No configuration found. Configuring ehcache from ehcache-failsafe.xml  found in the classpath: jar:file:/C:/deployments72/dependencies/ehcache-2.3.3/ehcache-1.6.2.jar!/ehcache-failsafe.xml
+Calling database>>>MARINE|product.productCode
+Calling database>>>MARINE|commodity.commodityDescription
+Calling database>>>MARINESTOP|commodity.commodityDescription
+Calling database>>>MARINE|warrantyAdd.warranty_codeQMS
+Calling database>>>MARINE|location.locationname
+Calling database>>>MARINE|location.name
+Calling database>>>MARINE|clauseAdd.clause_codeQMS
+Calling database>>>MARINE|clauseDelete.clause_codeQMS
+Calling database>>>MARINE|warrantyDelete.warranty_codeQMS
+MarinePremiumCalc.rb(122331) Warning: You should parenthesize one of the subexpressions because the 'and' and the 'or' operators have the same precedence. In the absence of parentheses, the operators are left associative.
+MarinePremiumCalc.rb(8157) Warning: Rule has been renamed 'REPLACEEXCESS' because of a name conflict with other auto-generated rule names.
+MarinePremiumCalc.rb(8318) Warning: Rule has been renamed 'REPLACEWARRANTY' because of a name conflict with other auto-generated rule names.
+MarinePremiumCalc.rb(119328) Warning: Superfluous cast.
+Ended generating ADB for MarineBusinessRMA.server on Wed 09/20/2017_16:57:03.58 

@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 rel. 2 (http://www.altova.com) by mazuki (darksiderg) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://marine.icicilombard.com"
+		   targetNamespace="http://marine.icicilombard.com" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="MarineResponse.xsd"/>
+	<xs:element name="marineRequest" type="tns:MarineRequest">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="Product">
+		<xs:sequence>
+			<xs:element name="productCode" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>This is Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CMCCode" type="xs:string" minOccurs="0"> <!--  tags used for CR-8036-71966 -->
+				<xs:annotation>
+					<xs:documentation>This is Mandatory for Ipartner New service as per CR 811962712</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!--19-12-2015 Tags are added by Balaram as per Marine Ipartner CR-8036-71966 START-->
+			<xs:element name="subcommodityCode" type="xs:string" minOccurs="0"> <!--  tags used for CR-8036-71966 -->
+				<xs:annotation>
+					<xs:documentation>This is Mandatory for Ipartner New service as per CR 8036-71966</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!--  Ended -->
+			<xs:element name="subProducts" type="tns:SubProduct" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="loading" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>This is Non Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="discount" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>This is Non Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sumInsured" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>This is Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!--25-06-2015 Tags are added by sivakrishna as per Marine CR-8036-52372 START-->
+			<xs:element name="typeOfSubCargo" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>This is Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="rackRateInPercentage" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>This is Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="excessOption" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Added for checking either getting single access or multiple. value will be single of multiple</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!-- 25-06-2015 Tags are added as per Marine CR-8036-52372 -->
+			<xs:element name="brokeragePercentage" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>This is Non Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="typeOfCargo" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>This is Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="perSendingLimit" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>This is Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="perLocationLimit" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>This is Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="modeOfConveyance" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>This is Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="consignmentValue" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>This is Non Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="serviceTax" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>This is Non Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="excessPercentage" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>This is Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="customDutySI" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used only for 2002I and 2006I</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="riInwardFlag" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Added as part of Nov23 CR-67 Value will be either "Y" or "N"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="coverageType" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Added for Ipartner CR to get the rackrate from Commodity Master</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="commodityName" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Added for Ipartner CR to get the rackrate from Commodity Master</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="agentID" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Added for Ipartner CR to get the discount on the Rack rate  and the minimum premium value</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!--Adding New Tags for CR-CR-8036-88111 - Marine Quote Deviation & Renewal Module - Started -->
+			<xs:element name="targetPremium" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used only for 2002I , 2002E and 2001 - Ipartner Application</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="targetRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used only for 2002I , 2002E and 2001 - Ipartner Application</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="targetPremiumFlag" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used only for 2002I , 2002E and 2001 - Ipartner Application</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="targetRateFlag" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used only for 2002I , 2002E and 2001 - Ipartner Application</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="loadingFlag" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used only for 2002I , 2002E and 2001 - Ipartner Application</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="discountFlag" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used only for 2002I , 2002E and 2001 - Ipartner Application</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PSLFlag" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used only for 2002I , 2002E and 2001 - Ipartner Application</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PLLFlag" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used only for 2002I , 2002E and 2001 - Ipartner Application</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="sumInsuredFlag" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used only for 2002I , 2002E and 2001 - Ipartner Application</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="intermediaryStorageFlag" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used only for 2002I , 2002E and 2001 - Ipartner Application</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="backdationFlag" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used only for 2002I , 2002E and 2001 - Ipartner Application</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="clausesFlag" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used only for 2002I , 2002E and 2001 - Ipartner Application</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="warrantiesFlag" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used only for 2002I , 2002E and 2001 - Ipartner Application</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="excessFlag" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used only for 2002I , 2002E and 2001 - Ipartner Application</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!-- Adding New Tags for CR-CR-8036-88111 - Marine Quote Deviation & Renewal Module - Ended -->
+						
+		</xs:sequence>
+	</xs:complexType>
+	<!--11-09-2015 Tags are added by chaitanya START-->
+	<!--Added by harini on 31st Oct 2018-->
+	<xs:simpleType name="ParameterType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="OD"/>
+			<xs:enumeration value="THEFT"/>
+			<xs:enumeration value="THIRDPARTY"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Added by harini on 31st Oct 2018-->
+	<xs:complexType name="Parameters">
+		<xs:sequence>
+			<xs:element name="paramterName" type="xs:string"/>
+			<xs:element name="parameterType" type="tns:ParameterType"/>
+			<xs:element name="relativity" type="xs:decimal"/>
+			<xs:element name="weightage" type="xs:decimal"/>
+			<xs:element name="parameterValue" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--11-09-2015 Tags are added by chaitanya END-->
+	<xs:complexType name="MarineRequest">
+		<xs:sequence>
+			<xs:element name="Product" type="tns:Product"/>
+			<xs:element name="requestID" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>This is Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!--below 25-06-2015 Tags are added as per Marine CR-8036-52372 -->
+			<xs:element name="QuoteStatus" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Added to check weather the request is for premim(value will be PENDING) or premim along with role(value will be APPROVE).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="commodityRequest" type="xs:string"> <!--  tags used for CR-8036-71966 -->
+				<xs:annotation>
+					<xs:documentation>Added to Ipartner to check weather the request is for Derviving Commidities or for premim Derivation.valuses are(YES/NO)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!--19-12-2015 Tags are added by Balaram as per Marine Ipartner CR-8036-71966 START-->
+			<xs:element name="coverApplicable" type="xs:string"> <!--  tags used for CR-8036-71966 -->
+				<xs:annotation>
+					<xs:documentation>Added to Ipartner to check weather the request is for Derviving Commidities or for Derviving Covers.valuses are(YES/NO)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!--  Ended  -->
+			<xs:element name="intermediaryCode" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>This is Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="iLLocation" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>This is Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="hubLocation" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>This is Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="employeeID" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>This is Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IMID" type="xs:string"> <!--  tags used for CR-8036-71966 -->
+				<xs:annotation>
+					<xs:documentation>This is Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!--25-06-2015 Tags are added by sivakrishna as per Marine CR-8036-52372 END-->
+			<xs:element name="userType" type="xs:integer">
+				<xs:annotation>
+					<xs:documentation>This is Mandatory</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="userRoles" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>This is Mandatory for Ipartner</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="policyStartDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>This is Mandatory and the format is  dd/mmm/yyyy</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="policyEndDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>This is Mandatory and the format is  dd/mmm/yyyy</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="policyType" minOccurs="0"/>
+			<!--Added for GST Details -->
+			<xs:element name="taxEffectiveDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Date to be used for doing tax calculation</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+			<xs:element name="taxDetails" type="tns:TaxDetails">
+				<xs:annotation>
+					<xs:documentation>This is user entered</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!--Added for GST Details -->
+			
+			<!-- Added by hadhi for Marine CR-->
+			<xs:element name="modeOfConveyance" type="xs:string"> <!-- only for Marine Stop Product (2002) -->
+				<xs:annotation>
+					<xs:documentation>This is at policy Level and is used to calculate teh Policy Rate and the Stamp Duty</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="brokeragePercentage" type="xs:decimal" minOccurs="0"> <!-- only for Marine Stop Product (2002) -->
+				<xs:annotation>
+					<xs:documentation>This determines the brokerage percentage across the policy and is aplicble for all the subproducts</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="excessPercentage" type="xs:decimal" minOccurs="0"> <!-- only for Marine Stop Product (2002) -->
+				<xs:annotation>
+					<xs:documentation>This determines the excess percentage across the policy and is aplicble for all the subproducts</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="consignmentValue" type="xs:decimal" minOccurs="0"> <!-- only for Marine Stop Product (2002) -->
+				<xs:annotation>
+					<xs:documentation>Used for Excess Calculation</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="riInwardFlag" type="xs:string"> <!-- only for Marine Stop Product (2002) -->
+				<xs:annotation>
+					<xs:documentation>Marine CR 67 </xs:documentation>
+				</xs:annotation>
+			</xs:element> 
+			<xs:element name="applyDiscOnTurnOverRate" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Marine Cr 85</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="discOnTurnOverRate" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="loadingOnTurnOverRate" type="xs:decimal" minOccurs="0"/>
+			<!-- Ended by hadhi for Marine CR-->
+			<xs:element name="channel" type="xs:string"> <!--  tags used for CR-8036-71966 -->
+				<xs:annotation>
+					<xs:documentation>This is for Ipartner CR </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dealID" type="xs:string"> <!--  tags used for CR-8033-82463_Partner Integration with Pathfinder - Biztalk Webservices -->
+				<xs:annotation>
+					<xs:documentation>This is for Ipartner CR </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="backdationDetails" type="tns:BackdationDetails" minOccurs="0"/>
+			<xs:element name="selectedBothBasicAndSRCC" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>MarinePFIntegration Related</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="intermediaryStorageApplicable" type="xs:boolean"/>
+			<xs:element name="intermediaryStorageDays" type="xs:integer"/>
+			<xs:element name="endorsementFlag" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Added for Ipartner CR 8036-45451</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="endorsementNinetyFivePercentRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Added for Ipartner CR 8036-45451</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="endorsementFivePercentRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Added for Ipartner CR 8036-45451</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="endorsementNetRate" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Added for Ipartner CR 8036-45451</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="endorsementEffectiveDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Added for Ipartner Service\Sales Tax CR</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="productParameters" type="tns:Parameters" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>This array holds the list of parameters defined. 11-09-2015 Tag  added by chaitanya </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		<!--Below list added by hadhi for J&K Stamp Duty CR-8036-79091-->
+		<xs:element name="txnType" type="tns:TxnType">
+			<xs:annotation>
+				<xs:documentation>Mandatory for J and k Stamp Duty CR</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+		<xs:element name="coInsurance" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Mandatory for J and k Stamp Duty CR</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+		<xs:element name="transactionDate" type="xs:date">
+			<xs:annotation>
+				<xs:documentation>Mandatory for J and k Stamp Duty CR</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+		<!--Ended by hadhi for J&K Stamp Duty CR-8036-79091-->
+		
+		<!--Below tags are added for MarineStopIpartner CR -->
+		
+		<xs:element name="exceptionFlag" type="xs:boolean"/>
+		<xs:element name="instalmentFlag" type="xs:boolean"/>
+		
+		<xs:element name="option" type="tns:Option">
+			<xs:annotation>
+				<xs:documentation>Mandatory for MarineStopIpartner Premium calculation CR</xs:documentation>
+			</xs:annotation>
+		</xs:element>
+	
+			<xs:element name="targetPremium" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used only for 2002 - Ipartner Application</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			
+		
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="Option">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Option_I"/>
+			<xs:enumeration value="Option_II"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Ended tags for MarineStopIpartner CR -->
+	
+		<!--Below list added by hadhi for J&K Stamp Duty CR-8036-79091-->
+	<xs:simpleType name="TxnType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NEW"/>
+			<xs:enumeration value="NEW_BUSINESS_FROM_EXISTING_CLIENT"/>
+			<xs:enumeration value="ENDORSEMENT"/>
+			<xs:enumeration value="RENEWAL"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	
+	<!--Ended by hadhi for J&K Stamp Duty CR-8036-79091-->
+</xs:schema>

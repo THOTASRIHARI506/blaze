@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 rel. 2 (http://www.altova.com) by mazuki (darksiderg) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"   xmlns:tns="http://marine.icicilombard.com"
+		   targetNamespace="http://marine.icicilombard.com" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="UserRoles">
+		<xs:sequence>
+			<xs:element name="userRole" type="xs:string"/>
+			<xs:element name="userRoleValue" type="xs:integer"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ServiceTaxDetails">
+		<xs:sequence>
+			<xs:element name="basicServiceTax" type="xs:decimal"/>
+			<xs:element name="educationCess" type="xs:decimal"/>
+			<xs:element name="higherEducationCess" type="xs:decimal"/>
+			<!--Below tag added by hadhi for Swachh Bharat -->
+			<xs:element name="swachhBharatCess" type="xs:decimal"/>
+			<!--Ended by hadhi for Swachh Bharat  -->
+			<!--Below tag added by hadhi for Krishi Kalyan -->
+			<xs:element name="krishiKalyanCess" type="xs:decimal"/>
+			<!--Ended by hadhi for Krishi Kalyan  -->
+			
+			<xs:element name="salesTax" type="xs:decimal"/>
+			<xs:element name="surcharge" type="xs:decimal"/>
+			<xs:element name="totalTax" type="xs:decimal"/>
+			<xs:element name="basicServiceTaxRate" type="xs:decimal"/>
+			<xs:element name="educationCessRate" type="xs:decimal"/>
+			<xs:element name="higherEducationCessRate" type="xs:decimal"/>
+			<!--Below tag added by hadhi for Swachh Bharat -->
+			<xs:element name="swachhBharatCessRate" type="xs:decimal"/>
+			<!--Ended by hadhi for Swachh Bharat  -->
+				<!--Below tag added by hadhi for Krishi Kalyan -->
+			<xs:element name="krishiKalyanCessRate" type="xs:decimal"/>
+			<!--Ended by hadhi for Krishi Kalyan  -->
+						
+			<xs:element name="salesTaxRate" type="xs:decimal"/>
+			<xs:element name="surchargeRate" type="xs:decimal"/>
+			<xs:element name="totalTaxRate" type="xs:decimal"/>
+			<xs:element name="premiumAfterTax" type="xs:decimal"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="PolicyType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NEW"/>
+			<xs:enumeration value="ENDORSEMENT"/>
+			<xs:enumeration value="CANCELLATION"/>
+			<xs:enumeration value="RENEWAL"/>
+			<xs:enumeration value="ROLLOVER"/>
+			<xs:enumeration value="OMRENEWAL"/>
+			<xs:enumeration value="OM_RENEWAL"/>
+			<xs:enumeration value="RENEWALNOTICE"/>
+			<xs:enumeration value="SPLITRENEWAL"/>
+			<xs:enumeration value="MERGERENEWAL"/>
+			<!--Below tag added for Generic Product -->
+			<xs:enumeration value="POLICY"/>
+		</xs:restriction>
+	</xs:simpleType>
+<xs:simpleType name="EndorsementType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PREMIUMBEARING"/>
+			<xs:enumeration value="NONPREMIUMBEARING"/>
+			<xs:enumeration value="TRIPDURATION"/>
+			<xs:enumeration value="TRIP_DURATION"/>
+			<xs:enumeration value="PRO-RATA"/>
+			<xs:enumeration value="SHORT-TERM"/>
+			<xs:enumeration value="REDUCTION_IN_POLICY_PERIOD"/>
+			<xs:enumeration value="NILENDORSEMENT"/>
+			<xs:enumeration value="NONNILENDORSEMENT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SourceSystem">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ECHANNEL"/>
+			<xs:enumeration value="PATHFINDER"/>
+			<xs:enumeration value="ONLINEMANAGER"/>
+			<xs:enumeration value="IAGENT"/>
+			<xs:enumeration value="ASPIRE"/>
+			<xs:enumeration value="IPARTNER"/>
+			<xs:enumeration value="QMS"/>
+			<xs:enumeration value="INDIABULLS"/>
+						<!--Below tag added for Generic Product -->
+			<xs:enumeration value="MOBILERTS"/>
+
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DetailMessage">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="MEDICALREPORTSREQUIRED"/>
+			<xs:enumeration value="NEEDAPPROVAL"/>
+			<xs:enumeration value="BMIMEDICALREPORTSREQUIRED"/>
+			<xs:enumeration value="QUESTIONMEDICALREPORTSREQUIRED"/>
+			<xs:enumeration value="MEDICALAPPROVALFORSUMINSUREDINCREASE"/>
+			<xs:enumeration value="APPROVALREQUIREDDUETOBREAKINPERIOD"/>
+			<xs:enumeration value="APPROVALREQUIREDFORROLLOVERPROPOSAL"/>
+			<xs:enumeration value="PEDPedingForMedicalApproval"/>
+			<xs:enumeration value="PENDING_FOR_APPROVAL_WITH_UW1,UW2;UWAPPROVAL:UNDERWRITER_APPROVAL_REQUIRED_FOR_BACKDATED_POLICY"/>
+			<xs:enumeration value="PENDING_FOR_APPROVAL_WITH_UW1,UW2;UWAPPROVAL:UNDERWRITER_APPROVAL_REQUIRED_FOR_FUTUREDATED_POLICY"/>
+			<xs:enumeration value="PENDING_FOR_APPROVAL_WITH_UW1,UW2;UWAPPROVAL:UNDERWRITER_APPROVAL_REQUIRED_FOR_TOTAL_SI_DEFAULT_VALUE(MAX:100000_MIN:50001)VIOLATED"/>
+			<xs:enumeration value="PENDING_FOR_APPROVAL_WITH_UW1,UW2;UWAPPROVAL:UNDERWRITER_APPROVAL_REQUIRED_FOR_INSURED_AGE"/>
+			<xs:enumeration value="PENDING_FOR_APPROVAL_WITH_UW1,UW2;UWAPPROVAL:UNDERWRITER_APPROVAL_REQUIRED_FOR_PRE_EXISTING_ILLNESS"/>		
+			
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="Message">
+		<xs:sequence>
+			<xs:element name="detailMessage" type="tns:DetailMessage"/>
+			<xs:element name="message" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Messages">
+		<xs:sequence>
+			<xs:element name="error" type="tns:Message" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="decline" type="tns:Message" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="conditionalApprove" type="tns:Message" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="info" type="tns:Message" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="TaxType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SALESTAX"/>
+			<xs:enumeration value="SERVICETAX"/>
+			<xs:enumeration value="EXEMPT"/>
+			<xs:enumeration value="GST"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PolicyStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="APPROVE"/>
+			<xs:enumeration value="CONDITIONALAPPROVE"/>
+			<xs:enumeration value="DECLINE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CancellationType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SHORT"/>
+			<xs:enumeration value="PRORATA"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CancellationEndorseType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="APPLIED"/>
+			<xs:enumeration value="MISSELLING"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RetainFlag">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="YES"/>
+			<xs:enumeration value="NO"/>
+			<xs:enumeration value="FULL"/>
+		</xs:restriction>
+	</xs:simpleType>
+			<xs:complexType name="StampDuty">
+              <xs:sequence>
+			   <xs:element name="stateName" type="xs:string">
+			<xs:annotation>
+					<xs:documentation>This is autopopulated and added for ZeroTat JK and Ladhak</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			  
+              <!--Below list added by hadhi for J&K Stamp Duty CR-8036-79091-->
+                <xs:element name="productCode" type="xs:string"/>
+                 <xs:element name="stampDutyCategory" type="xs:string"/>
+                 <xs:element name="transactionType" type="xs:string"/>
+				 <xs:element name="transactionDate" type="xs:date"/>
+                 <xs:element name="stampDutyEffectiveDateStatus" type="xs:string"/>
+                 <xs:element name="sumInsuredAmount" type="xs:decimal"/>
+				<xs:element name="maxSumInsuredAmount" type="xs:decimal"/>
+                 <xs:element name="premiumAmount" type="xs:decimal"/>
+                 <!--Ended by hadhi for J&K Stamp Duty CR-8036-79091-->
+				 <xs:element name="stampDutyDate" type="xs:date"/>
+                 <xs:element name="stampDutyRate" type="xs:decimal"/>
+                 <xs:element name="registrationNo" type="xs:string"/>
+                 <xs:element name="totalStampDuty" type="xs:decimal"/>
+                </xs:sequence>
+            </xs:complexType>
+
+	<xs:complexType name="CancellationCharges">
+		<xs:sequence>
+			<xs:element name="cancellationDate" type="xs:date"/>
+			<xs:element name="cancellationType" type="tns:CancellationType"/>
+			<xs:element name="cancellationEndorseType" type="tns:CancellationEndorseType"/>
+			<xs:element name="productCode" type="xs:string"/>
+			<xs:element name="cancellationRequired" type="xs:boolean"/>
+			<xs:element name="validPeriod" type="xs:date"/>
+			<xs:element name="cancellationCharge" type="xs:decimal"/>
+			<xs:element name="cancellationFlag" type="xs:boolean"/>
+			<xs:element name="retainPremium" type="tns:RetainFlag"/>
+			<xs:element name="premiumAmount" type="xs:decimal"/>
+			<xs:element name="refundAmount" type="xs:decimal"/>
+			<xs:element name="retainAmount" type="xs:decimal"/>
+			<xs:element name="retainAmountWithCancellationCharges" type="xs:decimal"/>
+			<!--Below tag added for Generic Product -->
+			<xs:element name="cancellationTaxDetails" type="tns:TaxDetails"/>
+			<!-- added on 3rdOct for stampduty -->
+			<xs:element name="stampDutyChargable" type="xs:boolean"/>
+			<xs:element name="stampDuty" type="xs:decimal"/>
+			<!-- added on 3rdOct for stampduty -->
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EndorsementInfo">
+		<xs:sequence>
+			<xs:element name="endorsementCount" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BackdationDetails">
+		<xs:sequence>
+			<xs:element name="productCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="days" type="xs:integer" minOccurs="0"/>
+			<xs:element name="approvalRole" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="CUW"/>
+						<xs:enumeration value="UW1"/>
+						<xs:enumeration value="UW2"/>
+						<xs:enumeration value="UW3"/>
+						<xs:enumeration value="UW4"/>
+						<xs:enumeration value="RM"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="policyStatus" type="tns:PolicyStatus" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TaxDetails">
+				<xs:sequence>
+				<xs:element name="taxType" type="tns:TaxType"/>
+					<xs:element name="gstServiceDetails" type="tns:GSTServiceDetails" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>This is autopopulated</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="gstTotalDetails" type="tns:GSTTotalDetails" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>This is autopopulated</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="totalServiceTax" type="tns:ServiceTaxDetails"/>
+				</xs:sequence>
+	</xs:complexType>		
+	<xs:complexType name="GSTServiceDetails">
+		<xs:sequence>
+			<xs:element name="transactionId" type="xs:string">
+			<xs:annotation>
+					<xs:documentation>This is Non-Mandatory in request</xs:documentation>
+				</xs:annotation>
+			</xs:element>	
+			<xs:element name="transactionType" type="tns:TransactionType">
+				<xs:annotation>
+					<xs:documentation>Mandatory in request</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ILGICStateName" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Mandatory in request</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="partyStateName" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Mandatory in request</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="itemType" type="tns:ItemType">
+				<xs:annotation>
+					<xs:documentation>Mandatory in request</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="registeredCustomer" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>This is Non-Mandatory in request</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="HSNSACCode" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Mandatory in request</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="grossAmount" type="xs:decimal">
+				<xs:annotation>
+					<xs:documentation>This is Non-mandatory in request</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="taxExempted" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Mandatory in request</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="HSNSACDescription" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>This is autopopulated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="GSTIN" type="xs:string"> 
+			<xs:annotation>
+					<xs:documentation>This is autopopulated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="stateName" type="xs:string">
+			<xs:annotation>
+					<xs:documentation>This is autopopulated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="stateCode" type="xs:string">
+			<xs:annotation>
+					<xs:documentation>This is autopopulated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="typeOfState" type="tns:TypeOfState">
+			<xs:annotation>
+					<xs:documentation>This is autopopulated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="GstRegBrName" type="xs:string">
+			<xs:annotation>
+					<xs:documentation>This is autopopulated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="GstRegBrAddress" type="xs:string">
+			<xs:annotation>
+					<xs:documentation>This is autopopulated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ISDCode" type="xs:string">
+			<xs:annotation>
+					<xs:documentation>This is autopopulated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CGSTRate" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is autopopulated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CGSTAmount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SGSTRate" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is autopopulated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SGSTAmount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IGSTRate" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is autopopulated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IGSTAmount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UTGSTRate" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is autopopulated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="UTGSTAmount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="GSTNetRate" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is autopopulated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="GSTAmount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SBCRate" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is autopopulated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SBCAmount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="KKCRate" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is autopopulated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="KKCAmount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="taxation1Rate" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is autopopulated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="taxation1Amount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="taxation2Rate" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is autopopulated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="taxation2Amount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="taxation3Rate" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is autopopulated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="taxation3Amount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="taxation4Rate" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is autopopulated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="taxation4Amount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="taxation5Rate" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is autopopulated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="taxation5Amount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="taxation6Rate" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is autopopulated.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="taxation6Amount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="otherTaxesAmount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="totalTax" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="finalAmount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="TypeOfState">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="S"/>
+			<xs:enumeration value="UT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ItemType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="GOOD"/>
+			<xs:enumeration value="SERVICE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TransactionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SALES"/>
+			<xs:enumeration value="PURCHASE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="GSTTotalDetails">
+		<xs:sequence>
+			<xs:element name="totalCGSTAmount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>	
+			<xs:element name="totalSGSTAmount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="totalIGSTAmount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="totalUTGSTAmount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="totalGSTAmount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="totalSBCAmount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="totalKKCAmount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="totaltaxation1Amount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="totaltaxation2Amount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="totaltaxation3Amount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="totaltaxation4Amount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="totaltaxation5Amount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="totaltaxation6Amount" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="otherTaxesAmountTotal" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="totalTaxBlockLevel" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="finalAmountBlockLevel" type="xs:decimal">
+			<xs:annotation>
+					<xs:documentation>This is auto calculated</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>	
+</xs:schema>
