@@ -1,31 +1,31 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: adok8
+  name: marine
 spec:
   type: LoadBalancer
   ports:
-  - port: 9999
-    targetPort: 9999
+  - port: 8080
+    targetPort: 8080
     protocol: TCP
     name: http
   selector:
-    app: adok8
+    app: marine
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: adok8-v1
+  name: marine-v1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: adok8
+      app: marine
   template:
     metadata:
       labels:
-        app: adok8
-        version: adok8-version-1
+        app: marine
+        version: marine-version-1
     spec:
       containers:
       - name: adok8-1
