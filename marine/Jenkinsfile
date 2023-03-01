@@ -22,16 +22,17 @@ pipeline {
                 sh 'docker build -t srirepo:marine .'
             }
         }
-          stage('Push Docker image to registry') {
+        stage('Push Docker image to registry') {
               steps {
                 script{
 
                     sh "aws ecr get-login-password --region ap-south-2 | docker login --username AWS    --password-stdin 670166063118.dkr.ecr.ap-south-2.amazonaws.com"
-                  sh  " docker tag srirepo:marine 670166063118.dkr.ecr.ap-south-2.amazonaws.com/srirepo:marine"
+                    sh  " docker tag srirepo:marine 670166063118.dkr.ecr.ap-south-2.amazonaws.com/srirepo:marine"
                     sh " docker push 670166063118.dkr.ecr.ap-south-2.amazonaws.com/srirepo:marine"
-                }
-            }
-              stage('Deploy to EKS cluster') {
+                  }
+             }
+        }
+        stage('Deploy to EKS cluster') {
                   steps{
                       script {
                           withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'sri-eks', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
@@ -44,7 +45,10 @@ pipeline {
             }
         }
     }
-}     
+}
+            
+              
+                   
 
       
      
