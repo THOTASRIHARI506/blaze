@@ -11,9 +11,9 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/THOTASRIHARI506/blaze.git']]])
                }
             }
-        }
+        
         stage('Build Maven project') {
-          steps {
+            steps {
                  sh 'mvn clean package'
             }
         }
@@ -23,7 +23,7 @@ pipeline {
             }
         }
           stage('Push Docker image to registry') {
-            steps {
+              steps {
                 script{
 
                     sh "aws ecr get-login-password --region ap-south-2 | docker login --username AWS    --password-stdin 670166063118.dkr.ecr.ap-south-2.amazonaws.com"
@@ -43,6 +43,7 @@ pipeline {
                 }
             }
         }
+    }
 }     
 
       
