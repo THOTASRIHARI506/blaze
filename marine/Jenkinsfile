@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Fetch source code') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main/marine']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/THOTASRIHARI506/blaze.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/THOTASRIHARI506/blaze.git']]])
                 
             }
         }
