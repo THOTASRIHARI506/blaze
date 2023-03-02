@@ -14,7 +14,7 @@ pipeline {
         
         stage('Build Maven project') {
             steps {
-                 sh 'mvn -f marine/pom.xml clean compile'
+                 sh 'mvn -f marine/pom.xml clean install'
             }
         }
         stage('Build Docker image') {
