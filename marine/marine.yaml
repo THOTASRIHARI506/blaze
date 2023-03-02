@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
       - name: adok8-1
-        image: 670166063118.dkr.ecr.ap-south-2.amazonaws.com/marine:latest
+        image: 670166063118.dkr.ecr.ap-south-2.amazonaws.com/srirepo:marine
         imagePullPolicy: Always
         env:
            - name: TZ
