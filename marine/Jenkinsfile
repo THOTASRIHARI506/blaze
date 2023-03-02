@@ -38,7 +38,7 @@ pipeline {
                           withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'sri-eks', namespace: '', restrictKubeConfigAccess: false, serverUrl: '') {
                           sh "aws eks update-kubeconfig --region ap-south-2 --name sri-eks"
                           sh 'kubectl get svc '
-                          sh 'kubectl apply -f marine.yaml'
+                          sh 'kubectl apply -f marine/marine.yaml'
                           }   
                       }
                 }
